@@ -33,7 +33,7 @@ export default function PostCard() {
             Plastic recycling machine
           </Typography>
           <Typography variant="body2" color="text.secondary">
-          Our world is awash in plastic. While it serves many purposes, the sheer volume of plastic waste poses a significant threat to our environment. Thankfully, there's a champion in this fight: the plastic recycling machine.
+          Our world is awash in plastic. While it serves many purposes, the sheer volume of plastic waste poses a significant threat to our environment. Thankfully, there is a champion in this fight: the plastic recycling machine.
           </Typography>
         </CardContent>
       </CardActionArea>
