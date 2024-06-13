@@ -71,7 +71,9 @@ export default function Appbar() {
                             px: 0,
                         }}
                     >
-                        <Image src={logo} width={"25"} height={"25"} className="mx-[12px]" style={logoStyle} alt={"logo"} />
+                        <Link href={"/"}>
+                            <Image src={logo} width={"25"} height={"25"} className="mx-[12px]" style={logoStyle} alt={"logo"} />
+                        </Link>
                         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                             <Link href={"/map"}>
                                 <Typography className="font-bold" color="text.primary" sx={{ py: '6px', px: '12px' }}>
