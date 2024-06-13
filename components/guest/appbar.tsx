@@ -1,5 +1,5 @@
 "use client";
-import { AppBar, Box, Button, Container, Divider, Drawer, MenuItem, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, Container, Divider, Drawer, Menu, MenuItem, Toolbar, Typography } from "@mui/material";
 import Image from "next/image";
 import logo from "@/public/logo-no-bg.png";
 import { useState } from "react";
@@ -11,9 +11,26 @@ const logoStyle = {
 };
 export default function Appbar() {
     const [open, setOpen] = useState(false);
-
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const [anchorE2, setAnchorE2] = useState<null | HTMLElement>(null);
+    const anchor = Boolean(anchorEl);
+    const anchor2 = Boolean(anchorE2);
     const toggleDrawer = (newOpen: boolean) => () => {
         setOpen(newOpen);
+    };
+
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const handleClick2 = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setAnchorE2(event.currentTarget);
+    };
+    const handleClose2 = () => {
+        setAnchorE2(null);
     };
     return (
         <AppBar position="fixed"
@@ -57,32 +74,43 @@ export default function Appbar() {
                         <Image src={logo} width={"25"} height={"25"} className="mx-[12px]" style={logoStyle} alt={"logo"} />
                         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                             <Link href={"/map"}>
-                                <MenuItem
-                                    sx={{ py: '6px', px: '12px' }}
-                                >
-                                    <Typography className="font-bold" color="text.primary">
-                                        Map
-                                    </Typography>
-                                </MenuItem>
+                                <Typography className="font-bold" color="text.primary" sx={{ py: '6px', px: '12px' }}>
+                                    Map
+                                </Typography>
                             </Link>
                             <Link href={"/post"}>
-                                <MenuItem
-                                    sx={{ py: '6px', px: '12px' }}
-                                >
-                                    <Typography className="font-bold" color="text.primary">
-                                        Posts
-                                    </Typography>
-                                </MenuItem>
-                            </Link>
-                            
-                            <MenuItem
-                                onClick={() => console.log('faq')}
-                                sx={{ py: '6px', px: '12px' }}
-                            >
-                                <Typography className="font-bold" color="text.primary">
-                                    FAQ
+                                <Typography className="font-bold" color="text.primary" sx={{ py: '6px', px: '12px' }}>
+                                    Posts
                                 </Typography>
-                            </MenuItem>
+                            </Link>
+                            <Typography 
+                                    className="font-bold hover:cursor-pointer" 
+                                    color="text.primary" 
+                                    id="button"
+                                    aria-controls={anchor ? 'menu' : undefined}
+                                    aria-haspopup="true"
+                                    aria-expanded={anchor ? 'true' : undefined}
+                                    onClick={handleClick}
+                                    sx={{ py: '6px', px: '12px' }}
+                                    >
+                                Open Your Business
+                            </Typography>
+                            <Menu
+                                id="menu"
+                                anchorEl={anchorEl}
+                                open={anchor}
+                                onClose={handleClose}
+                                MenuListProps={{
+                                'aria-labelledby': 'button',
+                                }}
+                            >
+                                <Link href={"/machines"}>
+                                    <MenuItem onClick={handleClose}>Machines</MenuItem>
+                                </Link>
+                                <Link href={"/processes"}>
+                                    <MenuItem onClick={handleClose}>Manufacturing Process</MenuItem>
+                                </Link>
+                            </Menu>
                         </Box>
                     </Box>
                     <Box
@@ -94,18 +122,18 @@ export default function Appbar() {
                     >
                         <Link href={"/login"}>
                             <Button
-                                color="primary"
                                 variant="text"
                                 size="small"
+                                className="text-green-700"
                             >
                                 Sign in
                             </Button>
                         </Link>
                         <Link href={"/register"}>
                             <Button
-                                color="primary"
                                 variant="contained"
                                 size="small"
+                                className='bg-green-700'
                             >
                                 Sign up
                             </Button>
@@ -141,41 +169,66 @@ export default function Appbar() {
                                 >
                                 </Box>
                                 <Link href={"/map"}>
-                                    <MenuItem>
+                                    <Typography>
                                         Maps
-                                    </MenuItem>
+                                    </Typography>
                                 </Link>
                                 
-                                <Link href={"/post"}>
-                                    <MenuItem>
+                                <Link href={"/post"} className="my-4">
+                                    <Typography>
                                         Posts
-                                    </MenuItem>
+                                    </Typography>
                                 </Link>
                                 
-                                <MenuItem onClick={() => console.log('faq')}>FAQ</MenuItem>
+                                <Typography
+                                    className="font-bold hover:cursor-pointer" 
+                                    id="button2"
+                                    aria-controls={anchor2 ? 'menu2' : undefined}
+                                    aria-haspopup="true"
+                                    aria-expanded={anchor2 ? 'true' : undefined}
+                                    onClick={handleClick2}
+                                    >
+                                    Open Your Business
+                                </Typography>
+                                <Menu
+                                    id="menu2"
+                                    anchorEl={anchorE2}
+                                    open={anchor2}
+                                    onClose={handleClose2}
+                                    MenuListProps={{
+                                    'aria-labelledby': 'button2',
+                                    }}
+                                >
+                                    <Link href={"/machines"}>
+                                        <MenuItem onClick={handleClose2}>Machines</MenuItem>
+                                    </Link>
+                                    <Link href={"/processes"}>
+                                    <MenuItem onClick={handleClose2}>Manufacturing Process</MenuItem>
+                                    </Link>
+                                </Menu>
                                 <Divider />
-                                <MenuItem>
+                                <div className="my-2">
                                     <Link href={"/register"}>
                                         <Button
-                                            color="primary"
+                                            className="bg-green-700"
                                             variant="contained"
                                             sx={{ width: '100%' }}
                                         >
                                             Sign up
                                         </Button>
                                     </Link>
-                                </MenuItem>
-                                <MenuItem>
+                                </div>
+                                <div>
                                     <Link href={"/login"}>
                                         <Button
-                                            color="primary"
+                                            className="text-green-700 border-green-700"
                                             variant="outlined"
                                             sx={{ width: '100%' }}
                                         >
                                             Sign in
                                         </Button>
                                     </Link>
-                                </MenuItem>
+                                </div>
                             </Box>
                         </Drawer>
                     </Box>

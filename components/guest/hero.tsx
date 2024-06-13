@@ -10,7 +10,7 @@ export default function Hero() {
         width: '100%',
         backgroundImage:
           theme.palette.mode === 'light'
-            ? 'linear-gradient(180deg, #CEE5FD, #FFF)'
+            ? 'linear-gradient(180deg, #79ba8d, #FFF)'
             : `linear-gradient(#02294F, ${alpha('#090E10', 0.0)})`,
         backgroundSize: '100% 100%',
         backgroundRepeat: 'no-repeat',
@@ -36,17 +36,17 @@ export default function Hero() {
               fontSize: 'clamp(3.5rem, 10vw, 4rem)',
             }}
           >
-            Plastics &&nbsp;
+            Golden&nbsp;
             <Typography
               component="span"
               variant="h1"
               sx={{
                 fontSize: 'clamp(3rem, 10vw, 4rem)',
                 color: (theme) =>
-                  theme.palette.mode === 'light' ? 'primary.main' : 'primary.light',
+                  theme.palette.mode === 'light' ? '#006E22' : 'primary.light',
               }}
             >
-              Eco
+              Plastics
             </Typography>
           </Typography>
           <Typography
@@ -63,7 +63,7 @@ export default function Hero() {
             useFlexGap
             sx={{ pt: 2, width: { xs: '100%', sm: 'auto' } }}
           >
-            <Button variant="contained" color="primary">
+            <Button variant="contained" className='bg-green-700'>
               Start now
             </Button>
           </Stack>

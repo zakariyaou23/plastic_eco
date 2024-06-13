@@ -2,12 +2,11 @@ import React from 'react';
 import { Avatar, Button, Card, CardActionArea, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography } from '@mui/material';
 import { red } from '@mui/material/colors';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 export default function PostCard() {
   return (
     <Card sx={{ maxWidth: 500 }}>
-      <CardActionArea>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -15,11 +14,11 @@ export default function PostCard() {
           </Avatar>
         }
         action={
-          <IconButton aria-label="settings">
-            <FontAwesomeIcon icon={faCog} />
+          <IconButton aria-label="ellipsis" className='mx-2'>
+            <FontAwesomeIcon icon={faEllipsisV} />
           </IconButton>
         }
-        title="Ibrahim Maxime Sherif"
+        title="Golden Plastic"
         subheader="September 14, 2016"
       />
         <CardMedia
@@ -30,18 +29,17 @@ export default function PostCard() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Plastic recycling machine
+            Plastic recycling is good.
           </Typography>
           <Typography variant="body2" color="text.secondary">
           Our world is awash in plastic. While it serves many purposes, the sheer volume of plastic waste poses a significant threat to our environment. Thankfully, there is a champion in this fight: the plastic recycling machine.
           </Typography>
         </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-      </CardActions>
+        <CardActions>
+          <Button size="small" color="primary">
+            Share
+          </Button>
+        </CardActions>
     </Card>
   );
 }
